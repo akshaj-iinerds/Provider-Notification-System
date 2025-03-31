@@ -1,0 +1,4 @@
+{"level":"error","message":"Error booking consultation: No verified providers available","timestamp":"2025-03-30T16:44:35.003Z"}
+{"level":"error","message":"Error in booking consultation: No verified providers available","timestamp":"2025-03-30T16:44:35.003Z"}
+{"level":"error","message":"Error sending reminders: res is not defined","timestamp":"2025-03-30T16:59:59.046Z"}
+{"level":"error","message":"Error in sending consultation reminders: res is not defined","timestamp":"2025-03-30T16:59:59.048Z"}
