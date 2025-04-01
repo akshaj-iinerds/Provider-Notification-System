@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const { upload } = require("../utils/multerConfig");
 const { booknewConsultation, getConsultations, sendConsultationReminders, updateConsultation, markMissedConsultation, markConsultationCompleted, fetchConsultationSummary, cancelConsultation } = require('../controllers/consultationController');
 
 //book new consultation notification
@@ -17,9 +16,6 @@ router.put('/:id', updateConsultation);
 
 // Mark a consultation as missed notification
 router.put("/missed/:consultationId", markMissedConsultation);
-
-// Upload a patient document to S3 and notify the provider
-// router.post("/upload", upload.single("document"), uploadDocument);
 
 // Update Consultation Status to Completed
 router.put("/:consultation_id/status", markConsultationCompleted);

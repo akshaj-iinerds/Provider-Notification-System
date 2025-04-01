@@ -66,18 +66,6 @@ const markMissedConsultation = async (req, res) => {
     }
 };
 
-// const uploadDocument = async (req, res) => {
-//     try {
-//       logger.info(`Received document upload request for consultation ${req.body.consultation_id}`);
-      
-//       const response = await uploadPatientDocument(req.file, req.body);
-//       res.status(response.status).json(response.data);
-//     } catch (error) {
-//       logger.error(`Error in uploadDocument: ${error.message}`);
-//       res.status(500).json({ error: "Internal Server Error" });
-//     }
-//   };
-
   const markConsultationCompleted = async (req, res) => {
     try {
       const { consultation_id } = req.params;
@@ -123,7 +111,6 @@ module.exports = {
   sendConsultationReminders,
   updateConsultation,
   markMissedConsultation,
-  // uploadDocument,
   markConsultationCompleted,
   fetchConsultationSummary,
   cancelConsultation

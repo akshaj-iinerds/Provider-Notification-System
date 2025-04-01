@@ -1,7 +1,7 @@
 const Billing = require("../models/billing");
 const Notification = require("../models/notification");
 const Provider = require("../models/provider");
-const { sendEmailNotification } = require("./emailService");
+const { sendEmailNotification } = require("../utils/emailService");
 const logger = require("../utils/logger");
 
 // ✅ Create Billing

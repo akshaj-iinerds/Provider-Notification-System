@@ -1,5 +1,5 @@
 const { Notification, Provider } = require("../models");
-const { sendEmailNotification } = require("./emailService");
+const { sendEmailNotification } = require("../utils/emailService");
 const logger = require("../utils/logger");
 
 // ✅ Send Failure Notification to Verified Providers

@@ -5,7 +5,7 @@ const logger = require("../utils/logger");
 exports.failureNotification = async (req, res) => {
     try {
         const { message } = req.body;
-        const result = await notificationService.sendFailureNotification(message);
+        const result = await notificationService.failureNotification(message);
         res.status(201).json(result);
     } catch (error) {
         logger.error(`Sending failure notification failed: ${error.message}`);

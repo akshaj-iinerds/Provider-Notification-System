@@ -68,3 +68,10 @@
 {"level":"info","message":"✅ Email sent to emily.davis@example.com","timestamp":"2025-04-01T05:16:01.549Z"}
 {"level":"info","message":"✅ Email sent to daniel.wilson@example.com","timestamp":"2025-04-01T05:16:04.754Z"}
 {"level":"info","message":"✅ Email sent to sophia.martinez@example.com","timestamp":"2025-04-01T05:16:07.893Z"}
+{"level":"info","message":"Received document upload request for consultation 2","timestamp":"2025-04-01T07:44:00.212Z"}
+{"level":"error","message":"Error uploading document: s3.upload is not a function","timestamp":"2025-04-01T07:44:00.228Z"}
+{"level":"info","message":"Received request to book consultation for patient ID 2","timestamp":"2025-04-01T07:52:10.236Z"}
+{"level":"info","message":"Booking consultation for patient 2 on 2025-04-03 at 10:00 AM","timestamp":"2025-04-01T07:52:10.238Z"}
+{"level":"warn","message":"No verified providers available for specialization: Neurology","timestamp":"2025-04-01T07:52:10.252Z"}
+{"level":"error","message":"Error booking consultation: No verified providers available","timestamp":"2025-04-01T07:52:10.253Z"}
+{"level":"error","message":"Error in booking consultation: No verified providers available","timestamp":"2025-04-01T07:52:10.253Z"}
