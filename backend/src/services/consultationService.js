@@ -3,10 +3,10 @@ const Consultation = require('../models/consultation');
 const Provider = require('../models/provider');
 const Patient = require('../models/patient');
 const { createNotification } = require('../utils/notificationService');
-const PatientDocument = require('../models/patientDocument');
+// const PatientDocument = require('../models/patientDocument');
 const { sendEmailNotification } = require('../utils/emailService');
-const s3 = require('../utils/awsConfig');
-const sharp = require('sharp');
+// const s3 = require('../utils/awsConfig');
+// const sharp = require('sharp');
 const logger = require('../utils/logger');
 
 async function bookConsultation(patient_id, date, time, priority) {
@@ -222,73 +222,73 @@ const markConsultationAsMissed = async (consultationId) => {
     }
 };
 
-const uploadPatientDocument = async (file, body) => {
-    try {
-      const { consultation_id, patient_id, date, document_type } = body;
+// const uploadPatientDocument = async (file, body) => {
+//     try {
+//       const { consultation_id, patient_id, date, document_type } = body;
   
-      if (!file) {
-        return { status: 400, data: { error: "No document uploaded" } };
-      }
+//       if (!file) {
+//         return { status: 400, data: { error: "No document uploaded" } };
+//       }
   
-      // Process the uploaded file using Sharp
-      const processedBuffer = await sharp(file.buffer).toBuffer();
-      const s3Key = `documents/${Date.now()}-${file.originalname}`;
+//       // Process the uploaded file using Sharp
+//       const processedBuffer = await sharp(file.buffer).toBuffer();
+//       const s3Key = `documents/${Date.now()}-${file.originalname}`;
   
-      // Upload the processed document to S3
-      const uploadResult = await s3
-        .upload({
-          Bucket: process.env.AWS_BUCKET_NAME,
-          Key: s3Key,
-          Body: processedBuffer,
-          ContentType: file.mimetype,
-          ACL: "public-read",
-        })
-        .promise();
+//       // Upload the processed document to S3
+//       const uploadResult = await s3
+//         .upload({
+//           Bucket: process.env.AWS_BUCKET_NAME,
+//           Key: s3Key,
+//           Body: processedBuffer,
+//           ContentType: file.mimetype,
+//           ACL: "public-read",
+//         })
+//         .promise();
   
-      const document_url = uploadResult.Location;
+//       const document_url = uploadResult.Location;
   
-      // Fetch provider_id from the Consultation table
-      const consultation = await Consultation.findByPk(consultation_id);
-      if (!consultation) {
-        return { status: 404, data: { error: "Consultation not found" } };
-      }
+//       // Fetch provider_id from the Consultation table
+//       const consultation = await Consultation.findByPk(consultation_id);
+//       if (!consultation) {
+//         return { status: 404, data: { error: "Consultation not found" } };
+//       }
   
-      const provider_id = consultation.provider_id;
+//       const provider_id = consultation.provider_id;
   
-      // Save document details in the database
-      const newDocument = await PatientDocument.create({
-        consultation_id,
-        provider_id,
-        patient_id,
-        date: new Date(date),
-        document_type,
-        document_url,
-      });
+//       // Save document details in the database
+//       const newDocument = await PatientDocument.create({
+//         consultation_id,
+//         provider_id,
+//         patient_id,
+//         date: new Date(date),
+//         document_type,
+//         document_url,
+//       });
   
-      // Notify provider
-      const provider = await Provider.findByPk(provider_id);
-      if (provider) {
-        await createNotification(
-          provider_id,
-          "consultation",
-          `Patient (ID: ${patient_id}) submitted a ${document_type} for consultation ID ${consultation_id} on ${date}.`,
-        );
+//       // Notify provider
+//       const provider = await Provider.findByPk(provider_id);
+//       if (provider) {
+//         await createNotification(
+//           provider_id,
+//           "consultation",
+//           `Patient (ID: ${patient_id}) submitted a ${document_type} for consultation ID ${consultation_id} on ${date}.`,
+//         );
   
-        await sendEmailNotification(
-          provider.email,
-          `New Patient Document Submitted`,
-          `Hello Dr. ${provider.name},\n\nA new document has been submitted by a patient.\n\nDetails:\nConsultation ID: ${consultation_id}\nDocument Type: ${document_type}\nSubmission Date: ${date}\n\nView document: ${document_url}\n\nBest regards,\nYour Healthcare Team`
-        );
+//         await sendEmailNotification(
+//           provider.email,
+//           `New Patient Document Submitted`,
+//           `Hello Dr. ${provider.name},\n\nA new document has been submitted by a patient.\n\nDetails:\nConsultation ID: ${consultation_id}\nDocument Type: ${document_type}\nSubmission Date: ${date}\n\nView document: ${document_url}\n\nBest regards,\nYour Healthcare Team`
+//         );
   
-        logger.info(`Notification sent to Dr. ${provider.name} for document upload.`);
-      }
+//         logger.info(`Notification sent to Dr. ${provider.name} for document upload.`);
+//       }
   
-      return { status: 201, data: { message: "Document uploaded successfully", document: newDocument } };
-    } catch (error) {
-      logger.error(`Error uploading document: ${error.message}`);
-      return { status: 500, data: { error: "Internal Server Error" } };
-    }
-  };
+//       return { status: 201, data: { message: "Document uploaded successfully", document: newDocument } };
+//     } catch (error) {
+//       logger.error(`Error uploading document: ${error.message}`);
+//       return { status: 500, data: { error: "Internal Server Error" } };
+//     }
+//   };
 
   const updateConsultationStatus = async (consultation_id) => {
     try {
@@ -417,7 +417,7 @@ module.exports = {
   sendRemindersForUpcomingConsultations,
   rescheduleConsultation,
   markConsultationAsMissed,
-  uploadPatientDocument,
+  // uploadPatientDocument,
   updateConsultationStatus,
   getConsultationSummary,
   deleteConsultation

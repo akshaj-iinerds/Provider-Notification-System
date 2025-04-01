@@ -1,5 +1,5 @@
 const logger = require('../utils/logger');
-const { getAllConsultations, bookConsultation,sendRemindersForUpcomingConsultations, rescheduleConsultation, markConsultationAsMissed, uploadPatientDocument, updateConsultationStatus, getConsultationSummary, deleteConsultation } = require("../services/consultationService");
+const { getAllConsultations, bookConsultation,sendRemindersForUpcomingConsultations, rescheduleConsultation, markConsultationAsMissed, updateConsultationStatus, getConsultationSummary, deleteConsultation } = require("../services/consultationService");
 
 const booknewConsultation = async (req, res) => {
   try {
@@ -66,17 +66,17 @@ const markMissedConsultation = async (req, res) => {
     }
 };
 
-const uploadDocument = async (req, res) => {
-    try {
-      logger.info(`Received document upload request for consultation ${req.body.consultation_id}`);
+// const uploadDocument = async (req, res) => {
+//     try {
+//       logger.info(`Received document upload request for consultation ${req.body.consultation_id}`);
       
-      const response = await uploadPatientDocument(req.file, req.body);
-      res.status(response.status).json(response.data);
-    } catch (error) {
-      logger.error(`Error in uploadDocument: ${error.message}`);
-      res.status(500).json({ error: "Internal Server Error" });
-    }
-  };
+//       const response = await uploadPatientDocument(req.file, req.body);
+//       res.status(response.status).json(response.data);
+//     } catch (error) {
+//       logger.error(`Error in uploadDocument: ${error.message}`);
+//       res.status(500).json({ error: "Internal Server Error" });
+//     }
+//   };
 
   const markConsultationCompleted = async (req, res) => {
     try {
@@ -123,7 +123,7 @@ module.exports = {
   sendConsultationReminders,
   updateConsultation,
   markMissedConsultation,
-  uploadDocument,
+  // uploadDocument,
   markConsultationCompleted,
   fetchConsultationSummary,
   cancelConsultation

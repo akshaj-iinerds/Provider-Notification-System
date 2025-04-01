@@ -6,7 +6,8 @@ const { connectDB, initializeTables } = require("./src/models/index");
 const consultationRoutes = require("./src/routes/consultationRoutes");
 const licenseRoutes = require("./src/routes/licenseRoutes");
 const billingRoutes = require("./src/routes/billingRoutes");
-const notificationRoutes = require("./src/routes/notificationRoutes")
+const notificationRoutes = require("./src/routes/notificationRoutes");
+const providerRoutes = require('./src/routes/providerRoutes');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use("/api/consultations", consultationRoutes);
 app.use("/api/license", licenseRoutes);
 app.use("/api/billing", billingRoutes);
 app.use("/api/notification", notificationRoutes);
+app.use("/api/provider", providerRoutes);
 
 // Load swagger.json using path.resolve()
 const swaggerFilePath = path.resolve(__dirname, './swagger/swagger.json');
