@@ -6,7 +6,7 @@ const checkLicenseExpiry = async () => {
     const today = new Date().toISOString().split("T")[0];
 
     // Fetch all providers
-    const providers = await Provider.findAll();
+    const providers = await Provider.findAll({ where: { verified: true } });
 
     // Filter providers with expired licenses
     const expiredProviders = providers.filter(provider => {
@@ -15,7 +15,7 @@ const checkLicenseExpiry = async () => {
     });
 
     if (expiredProviders.length === 0) {
-      return { message: "No providers with expired licenses found." };
+      return { message: "No verified providers with expired licenses found." };
     }
 
     // Prepare bulk notifications
