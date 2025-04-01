@@ -51,3 +51,10 @@
 {"level":"info","message":"✅ Email sent to sarah.johnson@example.com","timestamp":"2025-03-31T11:29:04.241Z"}
 {"level":"info","message":"✅ Email sent to michael.brown@example.com","timestamp":"2025-03-31T11:29:08.350Z"}
 {"level":"info","message":"✅ Email sent to emily.davis@example.com","timestamp":"2025-03-31T11:29:11.825Z"}
+{"level":"info","message":"Received request to book consultation for patient ID 1","timestamp":"2025-04-01T03:29:19.707Z"}
+{"level":"info","message":"Booking consultation for patient 1 on 2025-04-02 at 10:00 AM","timestamp":"2025-04-01T03:29:19.711Z"}
+{"level":"info","message":"✅ Email sent to akshajbabu21@gmail.com","timestamp":"2025-04-01T03:29:25.328Z"}
+{"level":"info","message":"Consultation booked successfully for patient 1","timestamp":"2025-04-01T03:29:25.329Z"}
+{"level":"info","message":"Request received to delete consultation ID 1","timestamp":"2025-04-01T03:30:15.155Z"}
+{"level":"info","message":"✅ Email sent to akshajbabu21@gmail.com","timestamp":"2025-04-01T03:30:19.393Z"}
+{"level":"info","message":"Consultation ID 1 deleted successfully.","timestamp":"2025-04-01T03:30:19.394Z"}
